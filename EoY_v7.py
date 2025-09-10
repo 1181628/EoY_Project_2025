@@ -6,15 +6,10 @@ from tkinter import messagebox
 
 root = tk.Tk()
 root.title("")
-root.geometry("520x750+300+90")
-
-#image = Image.open("a_name.png")
-#image = image.resize((100,100), Image.LANCZOS)
-#image = ImageTk.PhotoImage(image)
-
-#laybel image
-#laybel title subtitle
+root.geometry("820x670+350+100")
+root.configure(bg="white")
 #bugs
+#layout for sort and manage and card and catagolue bugs
 
 #-----------setting-----------
 total = 0
@@ -36,58 +31,127 @@ last_sort = {"sort_by": "Sort by..."}
 general_catalogue = {}
 reverse_flag = tk.BooleanVar(value=True)
 
+themes = {
+    "title":   {"font": ("Impact", 20), "bg": "#f2d243", "fg": "#2f58e0"},
+    "inform":  {"font": ("Impact", 16), "bg": "#f2d243", "fg": "#2f58e0"},
+    "button":  {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 29},
+    "catalogue": {"font": ("Impact", 14), "bg": "#2f58e0", "fg": "white", "width": 27},
+    "manage": {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 29},
+    "sort":  {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 5},
+    "exit": {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 17},
+    "relief": "flat"
+    }
+
 image = Image.open("1.png")
-image = image.resize((100,100), Image.LANCZOS)
-Blazegolem = ImageTk.PhotoImage(image)
+image = image.resize((100,400), Image.LANCZOS)
+image1 = ImageTk.PhotoImage(image)
 
 image = Image.open("2.png")
 image = image.resize((100,100), Image.LANCZOS)
-Dawnmirage = ImageTk.PhotoImage(image)
+image2 = ImageTk.PhotoImage(image)
 
 image = Image.open("3.png")
 image = image.resize((100,100), Image.LANCZOS)
-Frostste = ImageTk.PhotoImage(image)
+image3 = ImageTk.PhotoImage(image)
 
 image = Image.open("4.png")
 image = image.resize((100,100), Image.LANCZOS)
-Moldvine = ImageTk.PhotoImage(image)
+image4 = ImageTk.PhotoImage(image)
 
 image = Image.open("5.png")
 image = image.resize((100,100), Image.LANCZOS)
-Vexscream = ImageTk.PhotoImage(image)
+image5 = ImageTk.PhotoImage(image)
 
 image = Image.open("6.png")
 image = image.resize((100,100), Image.LANCZOS)
-Vortexwing = ImageTk.PhotoImage(image)
+image6 = ImageTk.PhotoImage(image)
 
 image = Image.open("7.png")
 image = image.resize((100,100), Image.LANCZOS)
-Wispghoul = ImageTk.PhotoImage(image)
+image7 = ImageTk.PhotoImage(image)
 
 image = Image.open("8.png")
 image = image.resize((100,100), Image.LANCZOS)
-Nightraid = ImageTk.PhotoImage(image)
+image8 = ImageTk.PhotoImage(image)
 
 image = Image.open("9.png")
 image = image.resize((100,100), Image.LANCZOS)
-Angryblow = ImageTk.PhotoImage(image)
+image9 = ImageTk.PhotoImage(image)
 
 image = Image.open("10.png")
 image = image.resize((100,100), Image.LANCZOS)
-Thelastone = ImageTk.PhotoImage(image)
+image10 = ImageTk.PhotoImage(image)
+
+image = Image.open("11.png")
+image = image.resize((100,100), Image.LANCZOS)
+image11 = ImageTk.PhotoImage(image)
+
+image = Image.open("12.png")
+image = image.resize((100,100), Image.LANCZOS)
+image12 = ImageTk.PhotoImage(image)
+
+image = Image.open("13.png")
+image = image.resize((100,100), Image.LANCZOS)
+image13 = ImageTk.PhotoImage(image)
+
+image = Image.open("14.png")
+image = image.resize((100,100), Image.LANCZOS)
+image14 = ImageTk.PhotoImage(image)
+
+image = Image.open("15.png")
+image = image.resize((100,100), Image.LANCZOS)
+image15 = ImageTk.PhotoImage(image)
+
+image = Image.open("16.png")
+image = image.resize((100,100), Image.LANCZOS)
+image16 = ImageTk.PhotoImage(image)
+
+image = Image.open("17.png")
+image = image.resize((100,100), Image.LANCZOS)
+image17 = ImageTk.PhotoImage(image)
+
+image = Image.open("18.png")
+image = image.resize((100,100), Image.LANCZOS)
+image18 = ImageTk.PhotoImage(image)
+
+image = Image.open("19.png")
+image = image.resize((100,100), Image.LANCZOS)
+image19 = ImageTk.PhotoImage(image)
+
+#image = Image.open("20.png")
+#image = image.resize((100,100), Image.LANCZOS)
+#image20 = ImageTk.PhotoImage(image)
+
+image_dictionary = {
+    "Blazegolem": image1,
+    "Dawnmirage": image2,
+    "Frostste": image3,
+    "Moldvine": image4,
+    "Vexscream": image5,
+    "Vortexwing": image6,
+    "Wispghoul": image7,
+    "image8": image8,
+    "image9": image9,
+    "image10": image10,
+    "image11": image11,
+    "image12": image12,
+    "image13": image13,
+    "image14": image14,
+    "image15": image15,
+    "image16": image16,
+    "image17": image17,
+    "image18": image18,
+    "image19": image19
+    }
 
 def create_image_buttons():
-    images = [Blazegolem, Dawnmirage, Frostste, Moldvine, Vexscream,
-             Vortexwing, Wispghoul, Nightraid, Angryblow, Thelastone]    
-    for i, img in enumerate(images):
+    for i, img in enumerate(image_dictionary):
         btn = tk.Button(root, image=img, command=lambda i=i: select_image(i))
         btn.pack()
 
 def select_image(index):
-    images = [Blazegolem, Dawnmirage, Frostste, Moldvine, Vexscream,
-             Vortexwing, Wispghoul, Nightraid, Angryblow, Thelastone]
-    image_label.config(image=images[index])
-    image_label.image = images[index]
+    image_label.config(image=image_dictionary[index])
+    image_label.image = image_dictionary[index]
 
 def upload_catalogue():
     with open('user_catalogue_file.txt', 'r') as usercatalogueFile:
@@ -114,14 +178,14 @@ def close_root():
 
 def end_page():
     save_catalogue()
-    root = tk.Toplevel()
-    root.title("Over look")
-    root.geometry("300x500+800+90")
+    window["window4"] = tk.Toplevel()
+    window["window4"].title("")
+    window["window4"].geometry("300x500+800+90")
     #label title
     for name, stats in user_catalogue.items():
-        label = tk.Label(root, text=f"{name}: {stats}")
+        label = tk.Label(window["window4"], text=f"{name}: {stats}")
         label.pack()
-    confirm_button = tk.Button(root, text="Confirm", command=close_root)
+    confirm_button = tk.Button(window["window4"], text="Confirm", command=close_root)
     confirm_button.pack()
 
 def save_exit():
@@ -132,6 +196,111 @@ def save_exit():
         return
 
 #----------sub functions----------    
+def print_catalogue():
+    save_catalogue()
+    window["window3"] = tk.Toplevel()
+    window["window3"].title("")
+    window["window3"].geometry("300x500+800+90")
+    with open('user_catalogue_file.txt', 'r') as usercatalogueFile:
+        for line in usercatalogueFile:
+            if line.strip():
+                label = tk.Label(window["window3"], text=line.strip())
+                label.pack()
+
+def go_back():
+    if "catalogue" in frames:
+        frames["catalogue"].destroy()
+        del frames["catalogue"]
+    if "manage" in frames:
+        frames["manage"].destroy()
+        del frames["manage"]
+    if "sort" in frames:
+        frames["sort"].destroy()
+        del frames["sort"]
+    if "catalogue_inform" in frames:
+        frames["catalogue_inform"].destroy()
+    if "print" in frames:
+        frames["print"].destroy()
+        del frames["print"]
+
+def find_card(entry):
+    if entry in general_catalogue.keys():
+        card["name"] = entry
+        card_detail(1)
+    else:
+        messagebox.showinfo("Invalid Entry", f"There is no card named {entry} in the catalogue.")
+
+def sort_card(sort_action):
+    sort = sort_list["sort_combo"].get()
+    if "catalogue" in frames:
+        frames["catalogue"].destroy()
+        del frames["catalogue"]
+    else:
+        return
+    if sort_list["sort_combo"].get() == "Sort by...":
+        if last_sort["sort_by"] == "Sort by...":
+            sort = "Alphabetical"
+        else: 
+            sort = last_sort["sort_by"]
+    if sort_action == 7:
+        reverse_flag.set(not reverse_flag.get())
+        reverse = reverse_flag.get()
+        reverse2 = (not reverse_flag.get())
+    else: 
+        reverse_flag2 = tk.BooleanVar(value=True)
+        reverse = reverse_flag2.get()
+        reverse2 = (not reverse_flag2.get())
+    if sort == "Alphabetical":
+        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[0].casefold(), reverse=reverse2))
+    elif sort == "Total scored":
+        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][4], reverse=reverse))
+    elif sort == "Strength":
+        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][0], reverse=reverse))
+    elif sort == "Speed":
+        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][1], reverse=reverse))
+    elif sort == "Stealth":
+        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][2], reverse=reverse))
+    elif sort == "Cunning":
+        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][3], reverse=reverse))
+    last_sort["sort_by"] = sort
+    general_catalogue.clear()
+    general_catalogue.update(sorted_catalogue)
+    label_catalogue(6) 
+
+def inside_frame_label():
+    if "manage" in frames:
+        parent_frame = frames["manage"]
+    else:
+        frames["sort"] = tk.Frame(root, bg="#f2d243")
+        frames["sort"].place(x=340, y=160, height=490, width=460)
+        frames["sort"].grid_propagate(False)
+        parent_frame = frames["sort"]
+    find_label = tk.Label(parent_frame, text="Find the card...",
+        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"])
+    find_label.place()
+    find_entry = tk.Entry(parent_frame,
+        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"])
+    find_entry.place()
+    find_button = tk.Button(parent_frame, text="Find", command=lambda:find_card(find_entry.get()),
+        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"], width=themes["sort"]["width"], relief=themes["relief"])
+    find_button.place()
+    sort_list["sort_combo"] = ttk.Combobox(parent_frame, 
+                values=["Alphabetical", "Total scored", "Strength", "Speed", "Stealth", "Cunning"],
+                font=themes["sort"]["font"])
+    sort_list["sort_combo"].set("Sort by...")
+    sort_list["sort_combo"].place()
+    sort_button = tk.Button(parent_frame, text="Sort", command=lambda:sort_card(6),
+        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"], width=themes["sort"]["width"], relief=themes["relief"])
+    sort_button.place()
+    reverse_button = tk.Button(parent_frame, text="↑↓", command=lambda:sort_card(7),
+        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"], width=2, relief=themes["relief"])
+    reverse_button.place()
+    if "sort" in frames:
+        go_back_button = tk.Button(parent_frame, text="Go back", command=go_back,
+            font=themes["exit"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
+        go_back_button.place()
+
+#----------main functions----------
 def error_popup(invalids):
     error_flag["flag"] = "yes"
     if invalids == 1:
@@ -190,100 +359,10 @@ def check_invalid(action):
             return
 
 def check_invalid_len():
-    if len(user_catalogue) == maximum_cards:
+    if len(user_catalogue) == maximum_cards: 
         error_popup(1)
         error_flag["flag"] = "yes"
 
-def go_back():
-    if ("catalogue" in frames):
-        frames["catalogue"].destroy()
-        del frames["catalogue"]
-    if "manage" in frames:
-        frames["manage"].destroy()
-        del frames["manage"]
-    if "sort" in frames:
-        frames["sort"].destroy()
-        del frames["sort"]
-    if "print" in frames:
-        frames["print"].destroy()
-        del frames["print"]
-
-def find_card(entry):
-    if entry in general_catalogue.keys():
-        card["name"] = entry
-        card_detail(1)
-    else:
-        messagebox.showinfo("Invalid Entry", f"There is no card named '{entry}' in the catalogue.")
-
-def sort_card(sort_action, reverse_flag):
-    sort = sort_list["sort_combo"].get()
-    if "catalogue" in frames:
-        frames["catalogue"].destroy()
-        del frames["catalogue"]    
-    if sort_list["sort_combo"].get() == "Sort by...":
-        if sort_action == 6:
-            sort = last_sort["sort_by"]
-        else:
-            if last_sort["sort_by"] == "Sort by...":
-                sort = "Alphabetical"
-            else:
-                sort = last_sort["sort_by"]
-            sort = "Alphabetical"
-    if sort_action == 7:
-        reverse_flag.set(not reverse_flag.get())
-        reverse = reverse_flag.get()
-        reverse2 = (not reverse_flag.get())
-    else: 
-        reverse_flag2 = tk.BooleanVar(value=True)
-        reverse = reverse_flag2.get()
-        reverse2 = (not reverse_flag2.get())
-    if sort == "Alphabetical":
-        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[0].casefold(), reverse=reverse2))
-    elif sort == "Total scored":
-        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][4], reverse=reverse))
-    elif sort == "Strength":
-        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][0], reverse=reverse))
-    elif sort == "Speed":
-        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][1], reverse=reverse))
-    elif sort == "Stealth":
-        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][2], reverse=reverse))
-    elif sort == "Cunning":
-        sorted_catalogue = dict(sorted(general_catalogue.items(), key=lambda name: name[1][3], reverse=reverse))
-    last_sort["sort_by"] = sort
-    general_catalogue.clear()
-    general_catalogue.update(sorted_catalogue)
-    label_catalogue(6) 
-
-def inside_frame_label(action):
-    if action in (1, 2):
-        frame_key = "sort"
-    elif "manage" in frames:
-        frame_key = "manage"
-    else:
-        return
-    if frame_key not in frames:
-        frames[frame_key] = tk.Frame(root, bg="grey")
-        frames[frame_key].pack()
-        frames[frame_key].grid_propagate(False)
-    parent_frame = frames[frame_key]
-    find_label = tk.Label(parent_frame, text="Find the card...")
-    find_entry = tk.Entry(parent_frame)
-    find_button = tk.Button(parent_frame, text="Find", command=lambda:find_card(find_entry.get()))
-    sort_list["sort_combo"] = ttk.Combobox(parent_frame, 
-                                                     values=["Alphabetical", "Total scored", "Strength", "Speed", "Stealth", "Cunning"])
-    sort_list["sort_combo"].set("Sort by...")
-    sort_button = tk.Button(parent_frame, text="Sort", command=lambda:sort_card(6, reverse_flag))
-    reverse_button = tk.Button(parent_frame, text="↑↓", command=lambda:sort_card(7, reverse_flag))
-    go_back_button = tk.Button(parent_frame, text="Go back", command=go_back)
-    find_label.pack()
-    find_entry.pack()
-    find_button.pack()
-    sort_list["sort_combo"].pack()
-    reverse_button.pack()
-    sort_button.pack()
-    go_back_button.pack()
-
-#----------main functions----------
 def confirm_action(action):
     if (action != 1) and (action != 2) and (action != 6):
         check_invalid(action)
@@ -315,37 +394,38 @@ def cancel_action():
         return
 
 def card_detail(action):
-    window["window2"] = tk.Toplevel(root)
+    window["window2"] = tk.Toplevel(root, bg="#f2d243")
     window["window2"].title(card["name"])
-    window["window2"].geometry("300x500+800+90")
-    name_label = tk.Label(window["window2"], text=card["name"])
-    image = tk.Label(root, image=card["name"])
+    window["window2"].geometry("340x600+800+90")
+    image = tk.Label(window["window2"], image=image_dictionary[card["name"]])
+    image.image = image_dictionary[card["name"]] 
     image.pack()
+    name_label = tk.Label(window["window2"], text=card["name"])
+    name_label.pack()
     strength_label = tk.Label(window["window2"], text=f"Strength: {general_catalogue[card['name']][0]}")
+    strength_label.pack()
     speed_label = tk.Label(window["window2"], text=f"Speed: {general_catalogue[card['name']][1]}")
+    speed_label.pack()
     stealth_label = tk.Label(window["window2"], text=f"Stealth: {general_catalogue[card['name']][2]}")
+    stealth_label.pack()
     cunning_label = tk.Label(window["window2"], text=f"Cunning: {general_catalogue[card['name']][3]}")
+    cunning_label.pack()
     totalscore_label = tk.Label(window["window2"], text=f"Total scores: {general_catalogue[card['name']][4]}")
+    totalscore_label.pack()
     confirm_button = tk.Button(window["window2"], text="Confirm", command=lambda: confirm_action(action))
     confirm_button.pack()
     if (action != 1) and (action != 2) and (action != 6):
         cancel_button = tk.Button(window["window2"], text="Cancel", command=cancel_action)
         cancel_button.pack()
-    name_label.pack()
-    strength_label.pack()
-    speed_label.pack()
-    stealth_label.pack()
-    cunning_label.pack()
-    totalscore_label.pack()
 
 def add_new_card():
     check_invalid_len()
     if error_flag["flag"] == "yes":
         return
     error_flag["flag"] = "no"
-    window["window2"] = tk.Toplevel(root)
+    window["window2"] = tk.Toplevel(root, bg="#f2d243")
     window["window2"].title("Make your own card")
-    window["window2"].geometry("300x500+800+90")
+    window["window2"].geometry("340x630+800+90")
     name_label = tk.Label(window["window2"], text="Name:")
     card["name"] = tk.Entry(window["window2"])
     strength_label = tk.Label(window["window2"], text="Strength:")
@@ -373,6 +453,17 @@ def add_new_card():
     cancel_button = tk.Button(window["window2"], text="Cancel", command=cancel_action)
     cancel_button.pack()
 
+def label_inform():
+    frames["catalogue_inform"] = tk.Frame(root, bg="#f2d243")
+    frames["catalogue_inform"].place(x=20, y=20, height=200, width=300)
+    frames["catalogue_inform"].grid_propagate(False)
+    text_label = tk.Label(frames["catalogue_inform"], text="Your  Monster  Card", 
+    font=("Impact", 20), bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+    text_label.place(x=15, y=15)
+    text_label = tk.Label(frames["catalogue_inform"], text=f"Catalogue:                    {len(user_catalogue)}/10", 
+    font=("Impact", 20), bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+    text_label.place(x=15, y=50)
+
 def label_catalogue(action):
     #error
     if action == 4:
@@ -380,36 +471,50 @@ def label_catalogue(action):
         if error_flag["flag"] == "yes":
             return
     error_flag["flag"] = "no"
-    frames["catalogue"] = tk.Frame(root, bg="grey")
-    frames["catalogue"].pack()
+    label_inform()
+    frames["catalogue"] = tk.Frame(root, bg="white")
+    frames["catalogue"].place(x=34, y=125, height=512, width=272)
     frames["catalogue"].grid_propagate(False)
-    text_label = tk.Label(frames["catalogue"], text=f"Your Monster Card Catalogue: {len(user_catalogue)}/10")
-    text_label.pack()
     if (action == 1) or (action == 5):
         general_catalogue.update(user_catalogue)
     elif (action == 2) or (action == 4):
         general_catalogue.update(existed_catalogue)
+    card_num = 0
     for name, stats in general_catalogue.items():
-        cards_button = tk.Button(frames["catalogue"], text=name, command=lambda name=name:(card.update({"name": name}), card_detail(action)))
-        cards_button.pack()
+        cards_button = tk.Button(frames["catalogue"], text=name, command=lambda name=name:(card.update({"name": name}), card_detail(action)),
+            font=themes["catalogue"]["font"], bg=themes["catalogue"]["bg"], fg=themes["catalogue"]["fg"], width=themes["catalogue"]["width"], relief=themes["relief"])
+        cards_button.place(x=9, y=10+card_num*50)
         if action == 5:
-            label = tk.Label(frames["catalogue"], text=" ", bg="red")
-            label.pack()
+            label = tk.Label(frames["catalogue"], text="", bg="red", font=themes["catalogue"]["font"], borderwidth=7)
+            label.place(x=245, y=10+card_num*50)
+        card_num = card_num + 1
+    for each in range(maximum_cards):
+        if each >= card_num:
+            laybel = tk.Label(frames["catalogue"], text="Empty Card Box",
+                font=themes["catalogue"]["font"], bg=themes["catalogue"]["bg"], fg=themes["catalogue"]["fg"], width=26, borderwidth=8)
+            laybel.place(x=9, y=10+card_num*50)
+            card_num = card_num + 1
+    if action == 1 or action == 2:
+        inside_frame_label()
             #may be bug here
-    inside_frame_label(action)
 
 def manage_user_catalogue():
-    frames["manage"] = tk.Frame(root, bg="grey")
-    frames["manage"].pack()
+    frames["manage"] = tk.Frame(root, bg="#f2d243")
+    frames["manage"].place(x=340, y=160, height=490, width=460)
     frames["manage"].grid_propagate(False)
-    add_new_button = tk.Button(frames["manage"], text="Make your own card", command=add_new_card)
-    add_new_button.pack()
-    add_exist_button = tk.Button(frames["manage"], text="Add from existing cards", command=lambda:label_catalogue(4))
-    add_exist_button.pack()
-    delete_button = tk.Button(frames["manage"], text="Removing a card", command=lambda:label_catalogue(5))
-    delete_button.pack()
-    go_back_button = tk.Button(frames["manage"], text="Go back", command=go_back)
-    go_back_button.pack()
+    inside_frame_label()
+    add_new_button = tk.Button(frames["manage"], text="Make your own card", command=add_new_card,
+        font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+    add_new_button.place(x=22,y=60)
+    add_exist_button = tk.Button(frames["manage"], text="Add from existing cards", command=lambda:label_catalogue(4),
+        font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+    add_exist_button.place(x=22,y=160)
+    delete_button = tk.Button(frames["manage"], text="Removing a card", command=lambda:label_catalogue(5),
+        font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+    delete_button.place(x=22,y=260)
+    go_back_button = tk.Button(frames["manage"], text="Go back", command=go_back,
+        font=themes["exit"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
+    go_back_button.place(x=106, y=360)
 
 #----------main code----------
 upload_catalogue()
@@ -418,34 +523,59 @@ existed_catalogue = dict(sorted(existed_catalogue.items(), key=lambda name: name
 for name, stats in user_catalogue.items():
         total = total + sum(stats[:4])
 
-frames["title"] = tk.Frame(root, bg="grey")
-frames["title"].pack()
+frames["title"] = tk.Frame(root, bg="#f2d243")
+frames["title"].place(x=340, y=20, height=120, width=460)
 frames["title"].grid_propagate(False)
-title_label = tk.Label(frames["title"], text="Monster Card Game Digital Catalogue")
-title_label.pack()
-text_label = tk.Label(frames["title"], text="——————————————————————————————————————————")
-subtitle_label = tk.Label(frames["title"], text="Choose what you want to do:")
-subtitle_label.pack()
+text_label = tk.Label(frames["title"], text="———————————————",
+    font=themes["title"]["font"], bg=themes["title"]["bg"], fg=themes["title"]["fg"])
+text_label.place(x=23, y=35)
+title_label = tk.Label(frames["title"], text="Monster Card Game Digital Catalogue", 
+    font=themes["title"]["font"], bg=themes["title"]["bg"], fg=themes["title"]["fg"])
+title_label.place(x=19, y=10)
+subtitle_label = tk.Label(frames["title"], text="Choose what you want to do:",
+    font=themes["title"]["font"], bg=themes["title"]["bg"], fg=themes["title"]["fg"])
+subtitle_label.place(x=67, y=61)
 
-frames["inform"] = tk.Frame(root, bg="grey")
-frames["inform"].pack()
+frames["inform"] = tk.Frame(root, bg="#f2d243")
+frames["inform"].place(x=20, y=20, height=630, width=300)
 frames["inform"].grid_propagate(False)
-text_label = tk.Label(frames["inform"], text=f"Your Monster Card Catalogue: {len(user_catalogue)}/10")
-text_label.pack()
-text_label = tk.Label(frames["inform"], text=f"Your Monster Card's Stats': {total}")
-text_label.pack()
+text_label = tk.Label(frames["inform"], text="Your Monster Card Catalogue:", 
+    font=themes["inform"]["font"], bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+text_label.place(x=6, y=60)
+text_label = tk.Label(frames["inform"], text="____", 
+    font=themes["inform"]["font"], bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+text_label.place(x=6, y=90)
+text_label = tk.Label(frames["inform"], text=f"{len(user_catalogue)}/10", 
+    font=themes["inform"]["font"], bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+text_label.place(x=6, y=85)
+text_label = tk.Label(frames["inform"], text="Your Monster Card's Stats':",
+    font=themes["inform"]["font"], bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+text_label.place(x=6, y=130)
+text_label = tk.Label(frames["inform"], text="___", 
+    font=themes["inform"]["font"], bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+text_label.place(x=6, y=160)
+text_label = tk.Label(frames["inform"], text=total,
+    font=themes["inform"]["font"], bg=themes["inform"]["bg"], fg=themes["inform"]["fg"])
+text_label.place(x=6, y=155)
 
-frames["button"] = tk.Frame(root, bg="grey")
-frames["button"].pack()
+frames["button"] = tk.Frame(root, bg="#f2d243")
+frames["button"].place(x=340, y=160, height=490, width=460)
 frames["button"].grid_propagate(False)
-user_catalogue_button = tk.Button(frames["button"], text="View your card catalogue", command=lambda: label_catalogue(1))
-user_catalogue_button.pack()
-exist_catalogue_button = tk.Button(frames["button"], text="View existing card's catalogue", command=lambda: label_catalogue(2))
-exist_catalogue_button.pack()
-manage_catalogue_button = tk.Button(frames["button"], text="Manage your card catalogue", command=manage_user_catalogue)
-manage_catalogue_button.pack()
-exit_button = tk.Button(root, text="Save & Exit", command=save_exit)
-exit_button.pack()
+user_catalogue_button = tk.Button(frames["button"], text="View your card catalogue", command=lambda: label_catalogue(1),
+    font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+user_catalogue_button.place(x=22, y=39)
+exist_catalogue_button = tk.Button(frames["button"], text="View existing card's catalogue", command=lambda: label_catalogue(2),
+    font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+exist_catalogue_button.place(x=22, y=124)
+manage_catalogue_button = tk.Button(frames["button"], text="Manage your card catalogue", command=manage_user_catalogue,
+    font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+manage_catalogue_button.place(x=22, y=214)
+print_catalogue_button = tk.Button(frames["button"], text="Print your catalogue", command=print_catalogue,
+    font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
+print_catalogue_button.place(x=22, y=300)
+exit_button = tk.Button(frames["button"], text="Save & Exit", command=save_exit,
+    font=themes["exit"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
+exit_button.place(x=106, y=388)
 
 
 #action1 : label user catalgoue
