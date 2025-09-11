@@ -3,6 +3,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 from tkinter import filedialog
 from tkinter import messagebox
+import os
 
 root = tk.Tk()
 root.title("")
@@ -19,6 +20,7 @@ minimum_stats = 1
 image_label = ""
 user_catalogue = {}
 existed_catalogue = {}
+stored_images = {}
 frames = {}
 window = {}
 card = {}
@@ -37,98 +39,100 @@ themes = {
     "button":  {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 29},
     "catalogue": {"font": ("Impact", 14), "bg": "#2f58e0", "fg": "white", "width": 27},
     "manage": {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 29},
-    "sort":  {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 5},
+    "sort":  {"font": ("Impact", 16), "bg": "#2f58e0", "fg": "white", "width": 5},
     "exit": {"font": ("Impact", 22), "bg": "#2f58e0", "fg": "white", "width": 17},
     "relief": "flat"
     }
 
-image = Image.open("1.png")
+image_dir = r"D:\Visual Studio code\EoY_Project_2025\prg_project_images"
+
+image = Image.open(os.path.join(image_dir, "1.png"))
 image = image.resize((100,400), Image.LANCZOS)
 image1 = ImageTk.PhotoImage(image)
 
-image = Image.open("2.png")
+image = Image.open(os.path.join(image_dir, "2.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image2 = ImageTk.PhotoImage(image)
 
-image = Image.open("3.png")
+image = Image.open(os.path.join(image_dir, "3.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image3 = ImageTk.PhotoImage(image)
 
-image = Image.open("4.png")
+image = Image.open(os.path.join(image_dir, "4.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image4 = ImageTk.PhotoImage(image)
 
-image = Image.open("5.png")
+image = Image.open(os.path.join(image_dir, "5.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image5 = ImageTk.PhotoImage(image)
 
-image = Image.open("6.png")
+image = Image.open(os.path.join(image_dir, "6.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image6 = ImageTk.PhotoImage(image)
 
-image = Image.open("7.png")
+image = Image.open(os.path.join(image_dir, "7.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image7 = ImageTk.PhotoImage(image)
 
-image = Image.open("8.png")
+image = Image.open(os.path.join(image_dir, "8.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image8 = ImageTk.PhotoImage(image)
 
-image = Image.open("9.png")
+image = Image.open(os.path.join(image_dir, "9.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image9 = ImageTk.PhotoImage(image)
 
-image = Image.open("10.png")
+image = Image.open(os.path.join(image_dir, "10.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image10 = ImageTk.PhotoImage(image)
 
-image = Image.open("11.png")
+image = Image.open(os.path.join(image_dir, "11.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image11 = ImageTk.PhotoImage(image)
 
-image = Image.open("12.png")
+image = Image.open(os.path.join(image_dir, "12.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image12 = ImageTk.PhotoImage(image)
 
-image = Image.open("13.png")
+image = Image.open(os.path.join(image_dir, "13.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image13 = ImageTk.PhotoImage(image)
 
-image = Image.open("14.png")
+image = Image.open(os.path.join(image_dir, "14.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image14 = ImageTk.PhotoImage(image)
 
-image = Image.open("15.png")
+image = Image.open(os.path.join(image_dir, "15.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image15 = ImageTk.PhotoImage(image)
 
-image = Image.open("16.png")
+image = Image.open(os.path.join(image_dir, "16.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image16 = ImageTk.PhotoImage(image)
 
-image = Image.open("17.png")
+image = Image.open(os.path.join(image_dir, "17.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image17 = ImageTk.PhotoImage(image)
 
-image = Image.open("18.png")
+image = Image.open(os.path.join(image_dir, "18.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image18 = ImageTk.PhotoImage(image)
 
-image = Image.open("19.png")
+image = Image.open(os.path.join(image_dir, "19.png"))
 image = image.resize((100,100), Image.LANCZOS)
 image19 = ImageTk.PhotoImage(image)
 
-#image = Image.open("20.png")
-#image = image.resize((100,100), Image.LANCZOS)
-#image20 = ImageTk.PhotoImage(image)
+image = Image.open(os.path.join(image_dir, "20.png"))
+image = image.resize((100,100), Image.LANCZOS)
+image20 = ImageTk.PhotoImage(image)
 
 image_dictionary = {
-    "Blazegolem": image1,
+    "Vexscream": image1,
     "Dawnmirage": image2,
-    "Frostste": image3,
+    "Blazegolem": image3,
     "Moldvine": image4,
-    "Vexscream": image5,
-    "Vortexwing": image6,
+    "Vortexwing": image5,
+    "Froststep": image6,
     "Wispghoul": image7,
     "image8": image8,
     "image9": image9,
@@ -141,36 +145,47 @@ image_dictionary = {
     "image16": image16,
     "image17": image17,
     "image18": image18,
-    "image19": image19
+    "image19": image19,
+    "image20": image20
     }
 
 def create_image_buttons():
-    for i, img in enumerate(image_dictionary):
-        btn = tk.Button(root, image=img, command=lambda i=i: select_image(i))
-        btn.pack()
+    for i, name in enumerate(image_dictionary.keys()):
+        btn = tk.Button(root, image=image_dictionary[name], command=lambda n=name: select_image(n))
+        btn.pack(side="left", padx=5, pady=5)
 
-def select_image(index):
-    image_label.config(image=image_dictionary[index])
-    image_label.image = image_dictionary[index]
+def select_image(name):
+    image_label.config(image=image_dictionary[name])
+    image_label.image = image_dictionary[name]
 
 def upload_catalogue():
     with open('user_catalogue_file.txt', 'r') as usercatalogueFile:
         for line in usercatalogueFile:
             if line.strip():
-                name, stats = line.strip().split(':', 1)
-                values = [int(item.strip()) for item in stats.split(',')]
-                user_catalogue[name.strip()] = values
+                parts = line.strip().split(':')
+                name = parts[0].strip()
+                values_part = parts[1].strip()
+                values = [item.strip() for item in values_part.split(',')]
+                numeric_values = [int(values[i]) for i in range(5)]
+                image_name = values[5] if len(values) > 5 else name
+                user_catalogue[name] = numeric_values
+                stored_images[name] = image_name
     with open('existed_catalogue.txt', 'r') as existedcatalogueFile:
         for line in existedcatalogueFile:
             if line.strip():
-                name, stats = line.strip().split(':', 1)
-                values = [int(item.strip()) for item in stats.split(',')]
-                existed_catalogue[name.strip()] = values
+                parts = line.strip().split(':')
+                name = parts[0].strip()
+                values_part = parts[1].strip()
+                values = [item.strip() for item in values_part.split(',')]
+                numeric_values = [int(values[i]) for i in range(5)]
+                image_name = values[5] if len(values) > 5 else name
+                existed_catalogue[name] = numeric_values
 
 def save_catalogue():
     with open('user_catalogue_file.txt', 'w') as usercatalogueFile:
         for name, stats in user_catalogue.items():
-            each = f"{name}: {','.join(map(str, stats))}\n"
+            image_name = stored_images.get(name, name)
+            each = f"{name}: {','.join(map(str, stats))},{image_name}\n"
             usercatalogueFile.write(each)
 
 def close_root():
@@ -270,35 +285,35 @@ def sort_card(sort_action):
 def inside_frame_label():
     if "manage" in frames:
         parent_frame = frames["manage"]
+        y_axis = 44
     else:
         frames["sort"] = tk.Frame(root, bg="#f2d243")
         frames["sort"].place(x=340, y=160, height=490, width=460)
         frames["sort"].grid_propagate(False)
         parent_frame = frames["sort"]
-    find_label = tk.Label(parent_frame, text="Find the card...",
-        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"])
-    find_label.place()
+        y_axis = 150
     find_entry = tk.Entry(parent_frame,
-        font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"])
-    find_entry.place()
+        font=themes["sort"]["font"], bg="white", fg=themes["sort"]["bg"])
+    find_entry.place(x=17, y=y_axis, width=120)
+    find_entry.insert(5, "Find card...")
     find_button = tk.Button(parent_frame, text="Find", command=lambda:find_card(find_entry.get()),
         font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"], width=themes["sort"]["width"], relief=themes["relief"])
-    find_button.place()
+    find_button.place(x=142, y=y_axis-9)
     sort_list["sort_combo"] = ttk.Combobox(parent_frame, 
                 values=["Alphabetical", "Total scored", "Strength", "Speed", "Stealth", "Cunning"],
                 font=themes["sort"]["font"])
     sort_list["sort_combo"].set("Sort by...")
-    sort_list["sort_combo"].place()
+    sort_list["sort_combo"].place(x=222, y=y_axis, width=120)
     sort_button = tk.Button(parent_frame, text="Sort", command=lambda:sort_card(6),
         font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"], width=themes["sort"]["width"], relief=themes["relief"])
-    sort_button.place()
+    sort_button.place(x=347, y=y_axis-9)
     reverse_button = tk.Button(parent_frame, text="↑↓", command=lambda:sort_card(7),
         font=themes["sort"]["font"], bg=themes["sort"]["bg"], fg=themes["sort"]["fg"], width=2, relief=themes["relief"])
-    reverse_button.place()
+    reverse_button.place(x=412, y=y_axis-9, width=30)
     if "sort" in frames:
         go_back_button = tk.Button(parent_frame, text="Go back", command=go_back,
             font=themes["exit"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
-        go_back_button.place()
+        go_back_button.place(x=102, y=240)
 
 #----------main functions----------
 def error_popup(invalids):
@@ -398,7 +413,7 @@ def card_detail(action):
     window["window2"].title(card["name"])
     window["window2"].geometry("340x600+800+90")
     image = tk.Label(window["window2"], image=image_dictionary[card["name"]])
-    image.image = image_dictionary[card["name"]] 
+    image.image = image_dictionary[stored_images[card['name']]] 
     image.pack()
     name_label = tk.Label(window["window2"], text=card["name"])
     name_label.pack()
@@ -505,23 +520,23 @@ def manage_user_catalogue():
     inside_frame_label()
     add_new_button = tk.Button(frames["manage"], text="Make your own card", command=add_new_card,
         font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
-    add_new_button.place(x=22,y=60)
+    add_new_button.place(x=22,y=115)
     add_exist_button = tk.Button(frames["manage"], text="Add from existing cards", command=lambda:label_catalogue(4),
         font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
-    add_exist_button.place(x=22,y=160)
+    add_exist_button.place(x=22,y=205)
     delete_button = tk.Button(frames["manage"], text="Removing a card", command=lambda:label_catalogue(5),
         font=themes["button"]["font"], bg=themes["button"]["bg"], fg=themes["button"]["fg"], width=themes["button"]["width"], relief=themes["relief"])
-    delete_button.place(x=22,y=260)
+    delete_button.place(x=22,y=295)
     go_back_button = tk.Button(frames["manage"], text="Go back", command=go_back,
         font=themes["exit"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
-    go_back_button.place(x=106, y=360)
+    go_back_button.place(x=106, y=390)
 
 #----------main code----------
 upload_catalogue()
 user_catalogue = dict(sorted(user_catalogue.items(), key=lambda name: name[0].lower()))
 existed_catalogue = dict(sorted(existed_catalogue.items(), key=lambda name: name[0].lower()))
 for name, stats in user_catalogue.items():
-        total = total + sum(stats[:4])
+        total = total + stats[4]
 
 frames["title"] = tk.Frame(root, bg="#f2d243")
 frames["title"].place(x=340, y=20, height=120, width=460)
