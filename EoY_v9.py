@@ -45,9 +45,7 @@ themes = {
     "relief": "flat"
     }
 
-#image_dir = r"G:\python\EoY_Project_2025\images"
-
-image_dir = r"D:\Visual Studio code\EoY_Project_2025\prg_project_images"
+image_dir = r"G:\python\EoY_Project_2025\images"
 
 image = Image.open(os.path.join(image_dir, "front_image.png"))
 image = image.resize((230,330), Image.LANCZOS)
@@ -141,19 +139,19 @@ image_dictionary = {
     "Vortexwing": image5,
     "Froststep": image6,
     "Wispghoul": image7,
-    "image8": image8,
-    "image9": image9,
-    "image10": image10,
-    "image11": image11,
-    "image12": image12,
-    "image13": image13,
-    "image14": image14,
-    "image15": image15,
-    "image16": image16,
-    "image17": image17,
-    "image18": image18,
-    "image19": image19,
-    "image20": image20
+    8 : image8,
+    9 : image9,
+    10 : image10,
+    11 : image11,
+    12 : image12,
+    13 : image13,
+    14 : image14,
+    15 : image15,
+    16 : image16,
+    17 : image17,
+    18 : image18,
+    19 : image19,
+    20 : image20
     }
 
 def create_image_buttons():
@@ -166,8 +164,7 @@ def select_image(name):
     image_label.image = image_dictionary[name]
 
 def upload_catalogue():
-    #with open('G:\python\EoY_Project_2025\existed_catalogue.txt', 'r') as usercatalogueFile:
-    with open(r'D:\Visual Studio code\EoY_Project_2025\user_catalogue_file.txt', 'r') as usercatalogueFile:
+    with open('G:\python\EoY_Project_2025\existed_catalogue.txt', 'r') as usercatalogueFile:
         for line in usercatalogueFile:
             if line.strip():
                 parts = line.strip().split(':')
@@ -178,8 +175,7 @@ def upload_catalogue():
                 image_name = values[5] if len(values) > 5 else name
                 user_catalogue[name] = numeric_values
                 stored_images[name] = image_name
-    #with open('G:\python\EoY_Project_2025\existed_catalogue.txt', 'r') as existedcatalogueFile:
-    with open(r'D:\Visual Studio code\EoY_Project_2025\existed_catalogue.txt', 'r') as existedcatalogueFile:
+    with open('G:\python\EoY_Project_2025\existed_catalogue.txt', 'r') as existedcatalogueFile:
         for line in existedcatalogueFile:
             if line.strip():
                 parts = line.strip().split(':')
@@ -191,8 +187,7 @@ def upload_catalogue():
                 existed_catalogue[name] = numeric_values
 
 def save_catalogue():
-    #with open('G:\python\EoY_Project_2025\existed_catalogue.txt', 'w') as usercatalogueFile:
-    with open(r'D:\Visual Studio code\EoY_Project_2025\user_catalogue_file.txt', 'w') as usercatalogueFile:
+    with open('G:\python\EoY_Project_2025\existed_catalogue.txt', 'w') as usercatalogueFile:
         for name, stats in user_catalogue.items():
             image_name = stored_images.get(name, name)
             each = f"{name}: {','.join(map(str, stats))},{image_name}\n"
@@ -205,7 +200,7 @@ def end_page():
     save_catalogue()
     window["window4"] = tk.Toplevel()
     window["window4"].title("")
-    window["window4"].geometry("820x670+350+100")
+    window["window4"].geometry("300x500+800+90")
     #label title
     for name, stats in user_catalogue.items():
         label = tk.Label(window["window4"], text=f"{name}: {stats}")
@@ -432,9 +427,9 @@ def card_detail(action):
     frames["card"] = tk.Frame(frames["labeling"], bg="white")
     frames["card"].place(x=10, y=354, height=175, width=310)
     frames["card"].grid_propagate(False)
-    name_label = tk.Label(frames["card"], text=f"Name:  {card['name']}",
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"])
-    name_label.place(x=5, y=5)
+    name_label = tk.Label(frames["card"], text=card['name'],
+        font=("Impact", 22), bg=themes["card"]["bg"], fg=themes["card"]["fg"])
+    name_label.place(x=70, y=3)
     label = tk.Label(frames["card"], text="", bg="#f2d243", width=50)
     label.place(x=0, y=40)
     strength_label = tk.Label(frames["card"], text=f"Strength:  {general_catalogue[card['name']][0]}",
@@ -464,101 +459,69 @@ def card_detail(action):
         font=themes["card"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
         confirm_button.place(x=80, y=540)
 
-current_image_index = 7  # 从第8个开始（索引7，因为从0开始计数）
+image_number = {"current" : 8}
 
-def select_image_left():
-    global current_image_index, current_image_label
-    current_image_index -= 1
-    # 如果小于7（前7个图像），跳到最后一个
-    if current_image_index < 7:
-        current_image_index = len(image_dictionary) - 1
-    # 获取图像名称（字典的键）
-    image_names = list(image_dictionary.keys())
-    current_image_name = image_names[current_image_index]
-    image_label.config(image=image_dictionary[current_image_name])
-    image_label.image = image_dictionary[current_image_name]
-    current_image_label.config(text=f"Selected: {current_image_name}")
-
-def select_image_right():
-    global current_image_index, current_image_label
-    current_image_index += 1
-    # 如果超过最后一个，跳回第8个（索引7）
-    if current_image_index >= len(image_dictionary):
-        current_image_index = 7
-    # 获取图像名称（字典的键）
-    image_names = list(image_dictionary.keys())
-    current_image_name = image_names[current_image_index]
-    image_label.config(image=image_dictionary[current_image_name])
-    image_label.image = image_dictionary[current_image_name]
-    current_image_label.config(text=f"Selected: {current_image_name}")
+def select_image(direction, image_label):    
+    if direction == "left":
+        image_number["current"]["current"] =  image_number["current"] - 1
+        if image_number["current"] < 8:
+            image_number["current"] = 20
+    elif direction == "right":
+        image_number["current"] = image_number["current"] + 1
+        if image_number["current"] > 20:
+            image_number["current"] = 8
+    
+    image_label.config(image=image_dictionary[image_number["current"]])
+    image_label.image = image_dictionary[image_number["current"]]
 
 def add_new_card():
     check_invalid_len()
     if error_flag["flag"] == "yes":
         return
     error_flag["flag"] = "no"
-    window["window2"] = tk.Toplevel(root, bg="white")
+    window["window2"] = tk.Toplevel(root, bg="#f2d243")
     window["window2"].title("Make your own card")
-    window["window2"].geometry("340x600+800+90")
+    window["window2"].geometry("340x630+800+90")
 
-    frames["labeling"] = tk.Frame(window["window2"], bg="#f2d243")
-    frames["labeling"].place(x=5, y=5, height=590, width=330)
-    frames["labeling"].grid_propagate(False)    
-    
-    select_left_button = tk.Button(window["window2"], text="◀", command=select_image_left,
-        font=themes["card"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
+    image_label = tk.Label(window["window2"])
+    image_label.pack(pady=5)
+    image_label.config(image=image_dictionary[image_number["current"]])
+    image_label.image = image_dictionary[image_number["current"]]
+
+    select_left_button = tk.Button(window["window2"], text="◀", command=lambda: select_image("left", image_label),
+        font=themes["card"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=10, relief=themes["relief"])
     select_left_button.pack()
 
-    select_right_button = tk.Button(window["window2"], text="▶", command=select_image_right,
-        font=themes["card"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=themes["exit"]["width"], relief=themes["relief"])
+    select_right_button = tk.Button(window["window2"], text="▶", command=lambda: select_image("right", image_label),
+        font=themes["card"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=10, relief=themes["relief"])
     select_right_button.pack()
 
-    image_names = list(image_dictionary.keys())
-    current_image_name = image_names[current_image_index]
-    current_image_label = tk.Label(window["window2"], 
-                              text=f"Selected: {current_image_name}",
-                              font=("Arial", 12), fg="blue")
-    current_image_label.pack(pady=5)
-                                   
-
-
-
-    name_label = tk.Label(window["window2"], text="Name:",
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"])
-    name_label.place(x=5, y=5)
-    card["name"] = tk.Entry(window["window2"],
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"], width=20)
-    card["name"].place(x=55, y=5)
-    strength_label = tk.Label(window["window2"], text="Strength:",
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"])
-    strength_label.place(x=5, y=65)
-    card["strength"] = tk.Entry(window["window2"],
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"], width=20)
-    card["strength"].place(x=35, y=65)
-    speed_label = tk.Label(window["window2"], text="Speed:",
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"])
-    speed_label.place(x=150, y=65)
-    card["speed"] = tk.Entry(window["window2"],
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"], width=20)
-    card["speed"].place(x=180, y=65)
-    stealth_label = tk.Label(window["window2"], text="Stealth:",
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"])
-    stealth_label.place(x=5, y=95)
-    card["stealth"] = tk.Entry(window["window2"],
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"], width=20)
-    card["stealth"].place(x=35, y=95)
-    cunning_label = tk.Label(window["window2"], text="Cunning:",
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"])
-    cunning_label.place(x=150, y=95)
-    card["cunning"] = tk.Entry(window["window2"],
-        font=themes["card"]["font"], bg=themes["card"]["bg"], fg=themes["card"]["fg"], width=20)
-    card["cunning"].place(x=180, y=95)
-    confirm_button = tk.Button(window["window2"], text="Confirm", command=lambda: confirm_action(3),
-        font=themes["card"]["font"], bg=themes["exit"]["bg"], fg=themes["exit"]["fg"], width=10, relief=themes["relief"])
-    confirm_button.place(x=45, y=540)
-    cancel_button = tk.Button(window["window2"], text="Cancel", command=cancel_action,
-        font=themes["card"]["font"], bg="red", fg=themes["exit"]["fg"], width=10, relief=themes["relief"])
-    cancel_button.place(x=185, y=540)
+    name_label = tk.Label(window["window2"], text="Name:")
+    card["name"] = tk.Entry(window["window2"])
+    strength_label = tk.Label(window["window2"], text="Strength:")
+    card["strength"] = tk.Entry(window["window2"])
+    speed_label = tk.Label(window["window2"], text="Speed:")
+    card["speed"] = tk.Entry(window["window2"])
+    stealth_label = tk.Label(window["window2"], text="Stealth:")
+    card["stealth"] = tk.Entry(window["window2"])
+    cunning_label = tk.Label(window["window2"], text="Cunning:")
+    card["cunning"] = tk.Entry(window["window2"])
+    name_label.pack()
+    card["name"].pack()
+    strength_label.pack()
+    card["strength"].pack()
+    speed_label.pack()
+    card["speed"].pack()
+    stealth_label.pack()
+    card["stealth"].pack()
+    cunning_label.pack()
+    card["cunning"].pack()
+    select_button = tk.Button(root, text="Select Image", command=select_image)
+    select_button.pack()
+    confirm_button = tk.Button(window["window2"], text="Confirm", command=lambda: confirm_action(3))
+    confirm_button.pack()
+    cancel_button = tk.Button(window["window2"], text="Cancel", command=cancel_action)
+    cancel_button.pack()
 
 def label_inform():
     frames["catalogue_inform"] = tk.Frame(root, bg="#f2d243")
